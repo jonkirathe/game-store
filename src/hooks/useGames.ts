@@ -23,7 +23,7 @@ const useGames = () => {
                 console.log(err.message)
             })
         return () => controller.abort();
-    }, []);
+    }, [toast]);
 
     return {games, setGames}
 }
