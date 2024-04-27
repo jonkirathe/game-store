@@ -8,7 +8,7 @@ const useGames = () => {
 
     useEffect(() => {
         const controller = new AbortController();
-        apiClient.get<GamesResponse>('/7games', {signal: controller.signal})
+        apiClient.get<GamesResponse>('/games', {signal: controller.signal})
             .then((res) => setGames(res.data.results))
             .catch(err => {
                 if(err instanceof CanceledError) return;
