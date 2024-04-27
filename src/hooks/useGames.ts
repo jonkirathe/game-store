@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import apiClient, {CanceledError} from "../services/api-client.ts";
 import { useToast } from '@chakra-ui/react'
+import {Game} from "../models/Game.ts";
 
 const useGames = () => {
     const toast = useToast()
