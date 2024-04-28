@@ -7,6 +7,6 @@ interface Props {
 }
 export const GameCardContainer = ({children}: Props) => {
     return (
-        <Box width='300px' borderRadius={10} overflow={"hidden"}>{children}</Box>
+        <Box borderRadius={10} overflow={"hidden"}>{children}</Box>
     );
 };

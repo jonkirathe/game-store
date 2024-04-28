@@ -1,4 +1,5 @@
 export interface Genre {
     id: number,
-    name: string
+    name: string,
+    image_background: string
 }
