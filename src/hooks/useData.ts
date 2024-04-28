@@ -30,7 +30,7 @@ const useData = <T>(endpoint: string) => {
                 setIsLoading(false)
             })
         return () => controller.abort();
-    }, [toast]);
+    }, [toast, endpoint]);
 
     return {data, setData, isLoading}
 }
