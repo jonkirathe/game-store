@@ -13,7 +13,6 @@ export const GenreList = ({onSelectedGenre, selectedGenre}: Props) => {
     const {data, isLoading} = useGenres()
 
     if (isLoading) return <Spinner/>
-
     return (
         <List>
             {data.map((genre) => (
