@@ -3,9 +3,14 @@ import {SimpleGrid} from "@chakra-ui/react";
 import {GameCard} from "./GameCard.tsx";
 import {GameCardSkeleton} from "./GameCardSkeleton.tsx";
 import {GameCardContainer} from "./GameCardContainer.tsx";
+import {Genre} from "../models/Genre.ts";
 
-export const GamesGrid = () => {
-    const {data, isLoading} = useGames()
+interface Props {
+    selectedGenre: Genre | null
+}
+
+export const GamesGrid = ({selectedGenre}: Props) => {
+    const {data, isLoading} = useGames(selectedGenre)
     const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
     return (
@@ -17,7 +22,7 @@ export const GamesGrid = () => {
             ))}
             {data.map((game) => (
                 <GameCardContainer key={game.id}>
-                <GameCard key={game.id} game={game}></GameCard>
+                    <GameCard key={game.id} game={game}></GameCard>
                 </GameCardContainer>
             ))}
         </SimpleGrid>

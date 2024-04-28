@@ -2,8 +2,9 @@ import {useToast} from "@chakra-ui/react";
 import {useEffect, useState} from "react";
 import apiClient, {CanceledError} from "../services/api-client.ts";
 import {FetchResponse} from "../models/FetchResponse.ts";
+import {AxiosRequestConfig} from "axios";
 
-const useData = <T>(endpoint: string) => {
+const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?: any[]) => {
     const toast = useToast()
     const [data, setData] = useState<T[]>([]);
     const [isLoading, setIsLoading] = useState(false)
@@ -12,7 +13,7 @@ const useData = <T>(endpoint: string) => {
         const controller = new AbortController();
 
         setIsLoading(true)
-        apiClient.get<FetchResponse<T>>(endpoint, {signal: controller.signal})
+        apiClient.get<FetchResponse<T>>(endpoint, {signal: controller.signal, ...requestConfig})
             .then((res) => {
                 setIsLoading(false)
                 setData(res.data.results)
@@ -30,7 +31,7 @@ const useData = <T>(endpoint: string) => {
                 setIsLoading(false)
             })
         return () => controller.abort();
-    }, [toast, endpoint]);
+    }, deps ? [...deps] : []);
 
     return {data, setData, isLoading}
 }
