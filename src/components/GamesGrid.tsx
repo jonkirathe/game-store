@@ -3,16 +3,14 @@ import {SimpleGrid} from "@chakra-ui/react";
 import {GameCard} from "./GameCard.tsx";
 import {GameCardSkeleton} from "./GameCardSkeleton.tsx";
 import {GameCardContainer} from "./GameCardContainer.tsx";
-import {Genre} from "../models/Genre.ts";
-import {Platform} from "../models/Platform.ts";
+import {GameQuery} from "../models/GameQuery.ts";
 
 interface Props {
-    selectedGenre: Genre | null,
-    selectedPlatform: Platform | null;
+    gameQuery: GameQuery;
 }
 
-export const GamesGrid = ({ selectedGenre, selectedPlatform }: Props) => {
-    const {data, isLoading} = useGames(selectedGenre, selectedPlatform)
+export const GamesGrid = ({ gameQuery }: Props) => {
+    const { data, isLoading } = useGames(gameQuery);
     const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
     return (
