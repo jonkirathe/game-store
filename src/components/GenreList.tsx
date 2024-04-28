@@ -6,11 +6,13 @@ import {Genre} from "../models/Genre.ts";
 
 interface Props {
     onSelectedGenre: (genre: Genre) => void;
+    selectedGenre: Genre | null;
 }
-export const GenreList = ({onSelectedGenre}:Props) => {
+
+export const GenreList = ({onSelectedGenre, selectedGenre}: Props) => {
     const {data, isLoading} = useGenres()
 
-    if(isLoading) return <Spinner/>
+    if (isLoading) return <Spinner/>
 
     return (
         <List>
@@ -18,7 +20,10 @@ export const GenreList = ({onSelectedGenre}:Props) => {
                 <ListItem key={genre.id} paddingY='5px'>
                     <HStack>
                         <Image boxSize='32px' borderRadius={8} src={getCroppedImageUrl(genre.image_background)}/>
-                        <Button onClick={() => onSelectedGenre(genre)} fontSize='lg' variant='link'>{genre.name}</Button>
+                        <Button
+                            colorScheme={selectedGenre?.id === genre.id ? 'blue' : 'white'}
+                            fontWeight={selectedGenre?.id === genre.id ? 'bold' : 'normal'}
+                            onClick={() => onSelectedGenre(genre)} fontSize='lg' variant='link'>{genre.name}</Button>
                     </HStack>
                 </ListItem>
 
