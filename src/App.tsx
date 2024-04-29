@@ -7,6 +7,7 @@ import {GameQuery} from "./models/GameQuery.ts";
 import SortSelector from "./components/SortSelector.tsx";
 import {GenreList} from "./components/GenreList.tsx";
 import {Navbar} from "./components/Navbar.tsx";
+import {GameHeading} from "./components/GameHeading.tsx";
 
 function App() {
     const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
@@ -33,8 +34,7 @@ function App() {
                 </Show>
                 <GridItem area="main">
                     <Box paddingLeft={2}>
-                        {/*<GameHeading gameQuery={gameQuery} />*/}
-
+                        <GameHeading gameQuery={gameQuery} />
                         <Flex marginBottom={5}>
                             <Box marginRight={5}>
                                 <PlatformSelector selectedPlatform={gameQuery.platform}
