@@ -11,7 +11,7 @@ import { SiNintendo } from 'react-icons/si';
 import { BsGlobe } from 'react-icons/bs';
 import {HStack, Icon} from "@chakra-ui/react";
 import { IconType } from "react-icons";
-import {Platform} from "../models/Game.ts";
+import {Platform} from "../models/Platform.ts";
 
 const iconMap: { [key: string]: IconType } = {
     pc: FaWindows,
