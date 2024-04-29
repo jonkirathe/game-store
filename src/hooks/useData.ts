@@ -4,7 +4,7 @@ import apiClient, {CanceledError} from "../services/api-client.ts";
 import {FetchResponse} from "../models/FetchResponse.ts";
 import {AxiosRequestConfig} from "axios";
 
-const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?: any[]) => {
+const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?: unknown[]) => {
     const toast = useToast()
     const [data, setData] = useState<T[]>([]);
     const [isLoading, setIsLoading] = useState(false)
